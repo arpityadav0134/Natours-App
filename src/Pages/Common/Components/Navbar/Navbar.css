@@ -1,0 +1,154 @@
+.navbar {
+    z-index: 3;
+    position: sticky;
+    top: 0;
+    display: inline-flex;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    padding: 0.8%;
+    justify-content: space-between;
+    height: 55px;
+    align-items: center;
+}
+
+.nav-left {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-menu {
+    display: inline-flex;
+    margin: 3px 10px;
+}
+
+.nav-menu-mobile {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    /* margin: 3px 10px; */
+}
+
+.nav-menu-mobile li {
+    list-style: none;
+    padding: 1px;
+    margin: 1px 4px;
+}
+
+.nav-menu-mobile li a {
+    list-style: none;
+    color: #f7f7f7;
+    text-decoration: none;
+    margin: 1px;
+    padding: 1px;
+    font-size: 20px;
+    display: inline-block;
+    transition: transform .3s ease-out;
+}
+
+.nav-menu-mobile li a:hover {
+    /* font-weight: bold; */
+    /* transform: translateY(20px); */
+    transform: translate(0, -3px);
+}
+
+
+.nav-menu li {
+    list-style: none;
+    padding: 1px;
+    margin: 1px 4px;
+}
+
+.nav-menu li a {
+    list-style: none;
+    color: #f7f7f7;
+    text-decoration: none;
+    margin: 1px;
+    padding: 1px;
+    font-size: 20px;
+    display: inline-block;
+    transition: transform .3s ease-out;
+}
+
+.nav-menu li a:hover {
+    /* font-weight: bold; */
+    /* transform: translateY(20px); */
+    transform: translate(0, -3px);
+}
+
+.nav-right {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ham-btn {
+    background-color: transparent;
+    color: white;
+    font-size: 25px;
+    padding: 0rem 0.4rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: none;
+}
+
+.nav-btn-signup {
+    color: #f7f7f7;
+    display: inline-block;
+    background-color: black;
+    border: 1px solid #f7f7f7;
+    border-radius: 20px;
+    text-decoration: none;
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    margin: 0.2rem;
+    transition: transform .3s ease-out;
+}
+
+.nav-btn-login {
+    color: #f7f7f7;
+    display: inline-block;
+    border-radius: 20px;
+    text-decoration: none;
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    margin: 0.2rem;
+    transition: transform .3s ease-out;
+}
+
+.nav-btn-login:hover {
+    transform: translate(0, -3px);
+}
+
+.nav-btn-signup:hover {
+    font-weight: bold;
+    background-color: #f7f7f7;
+    color: #777;
+    border-color: black;
+
+}
+
+.active {
+    font-weight: bold;
+}
+
+@media screen and (max-width:700px) {
+
+    .nav-left ul,
+
+    .auth {
+        display: none;
+    }
+
+    .ham-btn {
+        display: block;
+    }
+}

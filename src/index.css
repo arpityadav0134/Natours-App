@@ -1,13 +1,81 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.display-none {
+    display: none;
 }
+
+button {
+    border: none;
+    outline: none;
+}
+
+/* 
+.btn {
+    color: white;
+    display: inline-block;
+    min-width: 70px;
+    width: auto;
+    text-align: center;
+    background-color: #55c57a;
+    border-radius: 10px;
+    text-decoration: none;
+    height: 2.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.4rem;
+    margin: 0.2rem;
+    transition: transform .3s ease-out;
+}
+
+.btn:hover {
+    transform: translate(0, -3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.login-form {
+    width: auto;
+    margin: auto;
+    height: auto;
+    padding: 5rem 2rem;
+    border-radius: 2em;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform .3s ease-out;
+}
+
+.login-form h2,
+.login-form p {
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(#7dd56f), to(#28b487));
+    background-image: linear-gradient(to right, #7dd56f, #28b487);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    background-color: #f2f2f2;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 1.25em 1.75em;
+    margin: 15px 0;
+}
+
+.form-input:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.3);
+} */
