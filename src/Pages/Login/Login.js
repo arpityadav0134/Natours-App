@@ -17,6 +17,7 @@ const Login = () => {
         try {
             const res = await fetch('https://natours-by-arpit.herokuapp.com/api/v1/users/login', {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -29,7 +30,7 @@ const Login = () => {
                 alert('Invalid Credentials!!')
             }
             else {
-                //redirect user to landing page
+                //redirect user to landing page 
                 navigate('/')
             }
         } catch {
