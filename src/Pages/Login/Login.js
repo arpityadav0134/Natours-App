@@ -88,8 +88,8 @@ const Login = () => {
 
                             <input type="password" name='password' className="form-input" placeholder='Enter your password' onChange={(e) => { handleOnChange(e) }} value={credentials.password} required />
                             <div className="form-buttons">
-                                <button className='btn' onClick={handleLogin}>Login</button>
-                                <button className='link' onClick={handleReset}>Reset Password</button>
+                                <button className='btn' onClick={handleLogin}>Submit</button>
+                                <button className='link' onClick={handleReset}>Forgot Password?</button>
                             </div>
                         </div>
                     </form>

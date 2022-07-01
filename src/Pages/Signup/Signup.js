@@ -62,7 +62,7 @@ const Signup = () => {
                             <input onChange={(e) => { handleOnChange(e) }} value={details.passwordConfirm} type="password" id='passwordConfirm' name='passwordConfirm' className="form-input" placeholder='Confirm your password' autoComplete='off' required />
 
                             <div className="form-buttons">
-                                <button className='btn' onClick={handleSubmit} >Sign Up</button>
+                                <button className='btn' onClick={handleSubmit} >Submit</button>
                             </div>
                         </div>
                     </form>
