@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../Context APIs/UserContextAPI'
 import '../Common/Styles/Form.css'
 
 const Signup = () => {
     let navigate = useNavigate()
+    const { user, setUser } = useContext(UserContext)
     const [details, setDetails] = useState({
         name: "",
         email: "",
@@ -18,6 +20,7 @@ const Signup = () => {
         try {
             const res = await fetch('https://natours-by-arpit.herokuapp.com/api/v1/users/signup', {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -35,6 +38,10 @@ const Signup = () => {
                 alert('Invalid details!!')
             }
             else {
+                setUser({
+                    isLoggedIn: true,
+                    user: json.data.user
+                })
                 //redirect user to landing page
                 navigate('/')
             }
@@ -47,6 +54,10 @@ const Signup = () => {
             password: "",
             passwordConfirm: ""
         })
+    }
+
+    if (user.isLoggedIn) {
+        return navigate('/')
     }
 
     return (

@@ -1,28 +1,60 @@
 .home-main {
-    height: calc(100vh - 115px);
+    /* height: calc(100vh - 115px); */
+    /* height: auto; */
     background-color: #f7f7f7;
-    display: flex;
+    padding: 15px 0px;
+    text-align: center;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
-.home-main .upper-half {
-    width: 60vw;
+.upper-half {
+    /* width: 60%; */
+    width: auto;
+    display: inline-flex;
+    flex-direction: column;
     text-align: center;
     border: 2px solid black;
-    padding: 20px;
+    margin: auto;
+    padding: 10px;
     border-radius: 2em;
 }
 
-.home-main .upper-half p {
+.upper-half p {
     font-size: 200%;
+    display: inline-block;
+    margin: auto;
 }
 
-.home-main .upper-half h1 {
+.upper-half h1 {
     font-size: 300%;
+    display: inline-block;
+    margin: auto
 }
 
+.lower-half {
+    width: 90%;
+    margin: auto;
+    /* position: relative;
+    top: 12vh; */
+    padding: 40px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left,
+.right {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.left p,
+.right p {
+    display: inline-block;
+    text-align: center;
+}
 
 .btn {
     color: white;
@@ -46,35 +78,24 @@
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
-.lower-half {
-    display: flex;
-    width: 90vw;
-    justify-content: space-evenly;
-    position: relative;
-    top: 12vh;
-    padding: 40px 10px;
-}
-
-.left,
-.right {
-    display: inline-flex;
-    align-items: center;
-}
-
 @media screen and (max-width:700px) {
 
     .lower-half {
-        display: flex;
-        flex-direction: column;
-        width: 90vw;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        top: 12vh;
+        /* display: flex; */
+        /* flex-direction: column; */
+        width: 90%;
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* position: relative; */
+        /* top: 12vh; */
         padding: 40px 10px;
     }
 
-    .home-main .upper-half {
-        width: 90vw;
+    .upper-half {
+        width: 90%;
+    }
+
+    .lower-half {
+        text-align: center;
     }
 }
