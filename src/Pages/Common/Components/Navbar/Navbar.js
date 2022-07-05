@@ -44,7 +44,7 @@ const Navbar = () => {
                     {/* Navigation menu */}
                     <ul className='nav-menu'>
                         <li><Link className={`${location.pathname === '/' ? "active" : ""}`} to="/">Home</Link></li>
-                        <li><Link className={`${location.pathname === '/tours' ? "active" : ""}`} to="/tours">Tours</Link></li>
+                        <li><Link className={`${location.pathname === '/tours' ? "active" : ""}`} to="/alltours">All Tours</Link></li>
                         <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} to="/about">About Us</Link></li>
                         <li><Link className={`${location.pathname === '/contact' ? "active" : ""}`} to="/contact">Contact Us</Link></li>
                     </ul>
@@ -74,7 +74,7 @@ const Navbar = () => {
             {/* B) Navbar for smaller screen sizes, toggled by the hamburger button */}
             <ul className='nav-menu-mobile' style={{ display: displayNav ? 'flex' : 'none' }}>
                 <li><Link className={`${location.pathname === '/' ? "active" : ""}`} to="/">Home</Link></li>
-                <li><Link className={`${location.pathname === '/tours' ? "active" : ""}`} to="/tours">Tours</Link></li>
+                <li><Link className={`${location.pathname === '/tours' ? "active" : ""}`} to="/alltours">All Tours</Link></li>
                 <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} to="/about">About Us</Link></li>
                 <li><Link className={`${location.pathname === '/contact' ? "active" : ""}`} to="/contact">Contact Us</Link></li>
                 {!user.isLoggedIn ?

@@ -5,12 +5,14 @@ import Home from './Pages/Home/Home.js';
 import Login from './Pages/Login/Login.js';
 import Signup from './Pages/Signup/Signup.js';
 import UpdatePassword from './Pages/UpdatePassword/UpdatePassword.js';
-// import Tour from './Pages/Tour/Tour.js';
 import Footer from './Pages/Common/Components/Footer/Footer.js';
 import Navbar from './Pages/Common/Components/Navbar/Navbar.js';
 
 import { UserContextProvider } from './Context APIs/UserContextAPI'
 import UserAccount from './Pages/UserAccount/UserAccount';
+import AllTours from './Pages/AllTours/AllTours';
+import TopTours from './Pages/TopTours/TopTours'
+import TourDetails from './Pages/TourDetails/TourDetails';
 
 function App() {
 
@@ -24,7 +26,9 @@ function App() {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/myaccount' element={<UserAccount />} />
-            {/* <Route exact path='/tour/:tourId' element={<Tour />} /> */}
+            <Route exact path='/alltours' element={<AllTours pageSize='6' />} />
+            <Route exact path='/top-tours' element={<TopTours />} />
+            <Route exact path='/tour/:tourName' element={<TourDetails />} />
             <Route exact path='/resetPassword/:passwordResetToken' element={<UpdatePassword />} />
           </Routes>
           <Footer />
