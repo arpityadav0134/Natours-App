@@ -1,5 +1,5 @@
 .navbar {
-    z-index: 3;
+    z-index: 4;
     position: sticky;
     top: 0;
     display: inline-flex;
@@ -25,6 +25,9 @@
 }
 
 .nav-menu-mobile {
+    z-index: 3;
+    position: sticky;
+    top: 55px;
     display: none;
     width: 100vw;
     flex-direction: column;
