@@ -10,7 +10,7 @@
     background-color: #fff;
     width: 100%;
     color: #777;
-    box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.4);
+    box-shadow: 0 0 2rem rgb(0 0 0 / 0.4);
     background: -webkit-gradient(linear, left top, right bottom, from(#7dd56f), to(#28b487));
     background: linear-gradient(to right bottom, #7dd56f, #28b487);
     clip-path: polygon(0 var(--section-rotate), 100% 0, 100% calc(100% - var(--section-rotate)), 0 100%);
@@ -212,8 +212,8 @@
     background-color: #fff;
     align-items: center;
     justify-content: space-between;
-    -webkit-box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
-    box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0.5rem 2rem 0rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.5rem 2rem 0rem rgba(0, 0, 0, 0.15);
 }
 
 .cta__content {
@@ -236,6 +236,10 @@
 
     .main-window {
         padding: 0;
+    }
+
+    .tour-main {
+        box-shadow: none;
     }
 
     .heading-box {

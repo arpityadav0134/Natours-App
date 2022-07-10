@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Home.css'
 
 const Home = () => {
     return (
-        <>
+        <div className='content'>
             <div className='home-main'>
 
                 <div className="upper-half">
@@ -13,17 +14,17 @@ const Home = () => {
 
                 <div className="lower-half">
                     <div className="left">
-                        <a className='btn' href='/find-tours'>Find</a>
+                        <Link className='btn' to='/searchtours'>Find</Link>
                         <p>tours Best suited for you!!</p>
                     </div>
 
                     <div className="right">
-                        <a className='btn' href='/top-tours'>Check</a>
+                        <Link className='btn' to='/top-tours'>Check</Link>
                         <p>out our TOP-Rated tours!!</p>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

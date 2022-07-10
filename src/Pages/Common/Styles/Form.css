@@ -4,9 +4,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: calc(100vh - 115px); */
+    min-height: inherit;
     height: auto;
-    width: 100vw;
+    width: 100%;
     padding: 30px 0;
 }
 
@@ -17,6 +17,7 @@
     width: auto;
     margin: auto;
     height: auto;
+    overflow-x: auto;
     padding: 2rem;
     border-radius: 10px;
     background-color: #fff;
@@ -24,13 +25,14 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.15); */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-    transition: transform .3s ease-out;
+    /* box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15); */
+    /* transition: transform .3s ease-out; */
+    transition: box-shadow .2s ease-out;
 }
 
 .main-form:hover {
-    transform: translate(0, -3px);
+    /* transform: translate(0, -3px); */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
 .form-heading,
@@ -106,14 +108,15 @@
     outline: none;
     border-radius: 4px;
     /* padding: 1%; */
-    padding: 1.25em 1.75em;
+    padding: 10px 15px;
     margin: 0 5px 20px 5px;
+    border-bottom: 3px solid transparent;
 }
 
 .form-input:focus {
     border: none;
     outline: none;
-    box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #7dd56f;
 }
 
 .form-buttons {

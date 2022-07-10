@@ -1,0 +1,154 @@
+.search-tours-main {
+    display: flex;
+    width: 100%;
+    padding: 3%;
+    background-color: #f7f7f7;
+}
+
+.search-tours {
+    justify-self: flex-start;
+    align-self: flex-start;
+    max-width: 24%;
+    min-width: 270px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: 3% 0;
+    padding: 3% 1%;
+    border-radius: 10px;
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 15%);
+    margin-bottom: 5%;
+}
+
+.searchResults {
+    flex-grow: 1;
+}
+
+.search-main-form {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.search-tours-heading {
+    padding: 3% 1% 0 1%;
+    width: 100%;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(#7dd56f), to(#28b487));
+    background-image: linear-gradient(to right, #7dd56f, #28b487);
+    text-align: center;
+}
+
+.search-form-heading {
+    font-size: 25px;
+    width: 100%;
+    /* max-width: 300px; */
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(#7dd56f), to(#28b487));
+    background-image: linear-gradient(to right, #7dd56f, #28b487);
+    margin: 0 5px 20px 5px;
+    text-align: center;
+}
+
+.search-form-field {
+    /* flex-basis: 48%; */
+    width: 100%;
+    align-content: center;
+    margin: 1%;
+    border-radius: 10px;
+}
+
+.search-form-label {
+    display: block;
+    background-color: #f7f7f7;
+    width: 100%;
+    color: #777;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1% 0;
+    padding-left: 15px;
+    margin-right: 2%;
+}
+
+.search-form-input {
+    display: block;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #777;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    border-bottom: 3px solid transparent;
+}
+
+.search-form-input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #7dd56f;
+}
+
+.search-form-radios {
+    display: block;
+    width: 100%;
+    background-color: #f2f2f2;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    border-bottom: 3px solid transparent;
+}
+
+.form-radio {
+    margin-left: 1.5%;
+    margin-right: 0.5%;
+}
+
+.radio-text {
+    color: #777;
+    font-weight: 500;
+}
+
+.search-form-reset {
+    outline: none;
+    border: none;
+    padding: 1%;
+    margin: 2% auto;
+}
+
+@media screen and (max-width: 955px) {
+    .search-main-form {
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-form-heading {
+        font-size: 25px;
+        width: 100%;
+    }
+
+    .search-tours-main {
+        flex-direction: column;
+    }
+
+    .search-tours {
+        max-width: 100%;
+    }
+
+    .search-form-field {
+        align-self: stretch;
+        max-width: 48%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .search-form-field {
+        max-width: 100%;
+    }
+}

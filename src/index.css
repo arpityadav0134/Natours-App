@@ -7,19 +7,22 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html {
-    height: 100%;
-}
-
+html,
 body {
     height: 100%;
-}
-
-.display-none {
-    display: none;
 }
 
 button {
     border: none;
     outline: none;
+}
+
+.content {
+    min-height: calc(100vh - 115px);
+    background-color: #f7f7f7;
+
+}
+
+.display-none {
+    display: none;
 }

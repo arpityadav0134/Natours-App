@@ -1,27 +1,18 @@
-.main {
-    background-color: #f7f7f7;
-    padding: 5%;
-}
-
-.card-container {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
 .card {
     display: flex;
-    flex-basis: 30%;
+    max-width: 300px;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.15);
     background-color: #fff;
     margin: 1%;
     border: 2px solid #55c57a;
+    transition: box-shadow 0.2s ease-in;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 .card__header {
@@ -123,7 +114,7 @@
 }
 
 .card__icon {
-    padding: 1% 2%;
+    padding: 1% 5% 1% 1%;
     fill: #55c57a;
 }
 
@@ -147,10 +138,17 @@
     color: #999;
 }
 
+.no-results {
+    width: 100%;
+    text-align: center;
+    color: #777;
+    font-size: 25px;
+}
+
 @media screen and (max-width:1240px) {
 
     .card {
-        flex-basis: 45%;
+        /* flex-basis: 45%; */
     }
 }
 
@@ -164,7 +162,7 @@
 @media screen and (max-width:700px) {
 
     .card {
-        flex-basis: 90%;
+        /* flex-basis: 90%; */
     }
 
     .card__footer-text {

@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../Context APIs/UserContextAPI'
+import { disableButton, enableButton } from '../Common/Utils/toggleButtonState'
+import SnackBar from '../Common/Components/Snackbar/Snackbar'
 import '../Common/Styles/Form.css'
 
 const Signup = () => {
@@ -12,11 +14,14 @@ const Signup = () => {
         password: "",
         passwordConfirm: ""
     })
+    const [displayAlert, setDisplayAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState('')
     const handleOnChange = (e) => {
         setDetails({ ...details, [e.target.name]: e.target.value })
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+        disableButton(e.target.querySelector('.btn'))
         try {
             const res = await fetch('https://natours-by-arpit.herokuapp.com/api/v1/users/signup', {
                 method: 'POST',
@@ -35,19 +40,31 @@ const Signup = () => {
             console.log(json);
 
             if (json.status !== 'success') {
-                alert('Invalid details!!')
+                setAlertMsg({
+                    message: 'Invalid Details!',
+                    error: true
+                })
+                setDisplayAlert(true)
             }
             else {
                 setUser({
                     isLoggedIn: true,
                     user: json.data.user
                 })
-                //redirect user to landing page
-                navigate('/')
+                setAlertMsg({
+                    message: 'Login Successful!',
+                    error: false
+                })
+                setDisplayAlert(true)
             }
         } catch {
-            alert('Internal Server Error')
+            setAlertMsg({
+                message: 'Some Error Occurred!',
+                error: true
+            })
+            setDisplayAlert(true)
         }
+        enableButton(e.target.querySelector('.btn'))
         setDetails({
             name: "",
             email: "",
@@ -55,17 +72,22 @@ const Signup = () => {
             passwordConfirm: ""
         })
     }
-
+    useEffect(() => {
+        setTimeout(() => {
+            setDisplayAlert(false)
+        }, 2000);
+    }, [displayAlert])
     if (user.isLoggedIn) {
-        return navigate('/')
+        setTimeout(() => {
+            navigate('/')
+        }, 2000);
     }
-
     return (
-        <div>
+        <div className='content'>
             <div className="main-page">
                 <div className="main-form">
                     <h2 className='form-heading'>CREATE YOUR ACCOUNT!</h2>
-                    <form className='html-form'>
+                    <form className='html-form' onSubmit={handleSubmit}>
                         <div className="form-inputs">
                             <input onChange={(e) => { handleOnChange(e) }} value={details.name} type="text" id='name' name='name' className="form-input" placeholder='Enter your name' autoComplete='off' required />
                             <input onChange={(e) => { handleOnChange(e) }} value={details.email} type="email" id='email' name='email' className="form-input" placeholder='Enter your email' autoComplete='off' required />
@@ -73,12 +95,13 @@ const Signup = () => {
                             <input onChange={(e) => { handleOnChange(e) }} value={details.passwordConfirm} type="password" id='passwordConfirm' name='passwordConfirm' className="form-input" placeholder='Confirm your password' autoComplete='off' required />
 
                             <div className="form-buttons">
-                                <button className='btn' onClick={handleSubmit} >Submit</button>
+                                <button className='btn' type='submit' >Submit</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+            {displayAlert ? <SnackBar message={alertMsg} /> : ''}
         </div>
     )
 }

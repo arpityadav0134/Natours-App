@@ -13,6 +13,7 @@ import UserAccount from './Pages/UserAccount/UserAccount';
 import AllTours from './Pages/AllTours/AllTours';
 import TopTours from './Pages/TopTours/TopTours'
 import TourDetails from './Pages/TourDetails/TourDetails';
+import SearchTours from './Pages/SearchTours/SearchTours';
 
 function App() {
 
@@ -26,8 +27,9 @@ function App() {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/myaccount' element={<UserAccount />} />
-            <Route exact path='/alltours' element={<AllTours pageSize='6' />} />
             <Route exact path='/top-tours' element={<TopTours />} />
+            <Route exact path='/alltours' element={<AllTours />} />
+            <Route exact path='/searchtours' element={<SearchTours />} />
             <Route exact path='/tour/:tourName' element={<TourDetails />} />
             <Route exact path='/resetPassword/:passwordResetToken' element={<UpdatePassword />} />
           </Routes>

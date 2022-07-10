@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
+import { UserContext } from '../../Context APIs/UserContextAPI'
 import ImageSlider from '../Common/Components/Carousel/ImageSlider'
 import Spinner from '../Common/Components/Spinner/Spinner'
 import './TourDetails.css'
 
 const TourDetails = () => {
 
+    const { user } = useContext(UserContext)
     const [loading, setLoading] = useState(true)
     const { tourName } = useParams()
     const [tour, setTour] = useState({})
@@ -15,25 +17,21 @@ const TourDetails = () => {
     const fetchReviews = async () => {
 
         const url = `https://natours-by-arpit.herokuapp.com/api/v1/tours/${tour.id}/reviews`
-        try {
-            const res = await fetch(url, {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const json = await res.json()
 
-            if (json.status !== 'success') {
-                // alert('Internal Server Error!!')
-                throw new Error('request not completed')
+        const res = await fetch(url, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
             }
-            else {
-                setReviews(json.data.data)
-            }
-        } catch {
-            console.log('reviews are not available currently!!');
+        })
+        const json = await res.json()
+
+        if (json.status !== 'success') {
+            throw new Error('request not completed')
+        }
+        else {
+            setReviews(json.data.data)
         }
     }
     const fetchTour = async () => {
@@ -52,7 +50,6 @@ const TourDetails = () => {
             const json = await res.json()
 
             if (json.status !== 'success') {
-                alert('Internal Server Error!!')
                 throw new Error('request not completed')
             }
             else {
@@ -72,7 +69,9 @@ const TourDetails = () => {
     }, [])
     useEffect(() => {
         if (tour.name) {
-            fetchReviews()
+            if(user.isLoggedIn){
+                fetchReviews()
+            }
             setImages([
                 {
                     src: `/img/tours/${tour.images[0]}`,
@@ -92,7 +91,7 @@ const TourDetails = () => {
     }, [tour])
 
     return (
-        <>
+        <div className='content'>
             {
                 loading
                     ?
@@ -112,15 +111,15 @@ const TourDetails = () => {
                                     <div className="heading-box__group">
                                         <div className="heading-box__detail">
                                             <span className="heading-box__icon">
-                                                <i className="fa-solid fa-bars" ></i>
+                                                <i className="fa-regular fa-clock"></i>
                                             </span>
-                                            <span className="heading-box__text">{`${tour.duration}`} days</span>
+                                            <span className="heading-box__text">{` ${tour.duration} days`}</span>
                                         </div>
                                         <div className="heading-box__detail">
                                             <span className="heading-box__icon">
-                                                <i className="fa-solid fa-bars" ></i>
+                                                <i className="fa-solid fa-location-dot"></i>
                                             </span>
-                                            <span className="heading-box__text">{`${tour.startLocation.description}`}</span>
+                                            <span className="heading-box__text">{` ${tour.startLocation.description}`}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -133,28 +132,28 @@ const TourDetails = () => {
                                             <div className="overview-details">
                                                 <div className="overview-box__detail">
                                                     <span className="overview-box__icon">
-                                                        <i className="fa-solid fa-bars" ></i>
+                                                        <i className="fa-regular fa-calendar"></i>
                                                     </span>
                                                     <span className="overview-box__label">Next date</span>
                                                     <span className="overview-box__text">{`${tour.startDates[0].slice(0, 10)}`}</span>
                                                 </div>
                                                 <div className="overview-box__detail">
                                                     <span className="overview-box__icon">
-                                                        <i className="fa-solid fa-bars" ></i>
+                                                        <i className="fa-solid fa-arrow-trend-up"></i>
                                                     </span>
                                                     <span className="overview-box__label">Difficulty</span>
                                                     <span className="overview-box__text">{`${tour.difficulty}`}</span>
                                                 </div>
                                                 <div className="overview-box__detail">
                                                     <span className="overview-box__icon">
-                                                        <i className="fa-solid fa-bars" ></i>
+                                                        <i className="fa-solid fa-people-group"></i>
                                                     </span>
                                                     <span className="overview-box__label">Participants</span>
                                                     <span className="overview-box__text">{`${tour.maxGroupSize} people`}</span>
                                                 </div>
                                                 <div className="overview-box__detail">
                                                     <span className="overview-box__icon">
-                                                        <i className="fa-solid fa-bars" ></i>
+                                                        <i className="fa-regular fa-star"></i>
                                                     </span>
                                                     <span className="overview-box__label">Rating</span>
                                                     <span className="overview-box__text">{`${tour.ratingsAverage}`} / 5</span>
@@ -198,7 +197,7 @@ const TourDetails = () => {
                                     <ImageSlider images={images} />
                                 </div>
                             </section>
-                            <section className="section-reviews">
+                            {user.isLoggedIn ? <section className="section-reviews">
                                 <div className="reviews">
 
                                     {reviews.map((ele, i) => {
@@ -209,30 +208,13 @@ const TourDetails = () => {
                                                 <h6 className="reviews__user">{`${ele.user.name}`}</h6>
                                             </div>
                                             <p className="reviews__text">{`${ele.review}`}</p>
-                                            {/* <div className="reviews__rating">
-                                                <span className="overview-box__icon">
-                                                    <i className="fa-solid fa-bars" ></i>
-                                                </span>
-                                                <span className="overview-box__icon">
-                                                    <i className="fa-solid fa-bars" ></i>
-                                                </span>
-                                                <span className="overview-box__icon">
-                                                    <i className="fa-solid fa-bars" ></i>
-                                                </span>
-                                                <span className="overview-box__icon">
-                                                    <i className="fa-solid fa-bars" ></i>
-                                                </span>
-                                                <span className="overview-box__icon">
-                                                    <i className="fa-solid fa-bars" ></i>
-                                                </span>
-                                            </div> */}
                                             <div className="reviews__rating">
                                                 Rated: {`${ele.rating}/5`}
                                             </div>
                                         </div>
                                     })}
                                 </div>
-                            </section>
+                            </section> : ''}
                             <section className="section-cta">
                                 <div className="cta">
                                     <div className="cta__content">
@@ -245,7 +227,7 @@ const TourDetails = () => {
                         </div>
                     </div>
             }
-        </>
+        </div>
     )
 }
 

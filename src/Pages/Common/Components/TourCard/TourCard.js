@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './TourCard.css'
 
 const TourCard = (props) => {
@@ -30,25 +31,25 @@ const TourCard = (props) => {
                 <div className="card-about">
                     <div className="card__data">
                         <span className="card__icon">
-                            <i className="fa-solid fa-bars" ></i>
+                        <i className="fa-solid fa-location-dot"></i>
                         </span>
                         <span>{`${tour.startLocation.description}`}</span>
                     </div>
                     <div className="card__data">
                         <span className="card__icon">
-                            <i className="fa-solid fa-bars" ></i>
+                        <i className="fa-regular fa-calendar"></i>
                         </span>
                         <span>{`${tour.startDates[0].slice(0, 10)}`}</span>
                     </div>
                     <div className="card__data">
                         <span className="card__icon">
-                            <i className="fa-solid fa-bars" ></i>
+                        <i className="fa-solid fa-flag"></i>
                         </span>
                         <span> {tour.locations.length} stops</span>
                     </div>
                     <div className="card__data">
                         <span className="card__icon">
-                            <i className="fa-solid fa-bars" ></i>
+                        <i className="fa-solid fa-people-group"></i>
                         </span>
                         <span>{`${tour.maxGroupSize} people`}</span>
                     </div>
@@ -64,7 +65,7 @@ const TourCard = (props) => {
                     <span className="card__footer-value">{`${tour.ratingsAverage}`} </span>
                     <span className="card__footer-text">rating (6)</span>
                 </p>
-                <a className="btn btn--green btn--small" href={`/tour/${slug}`}>Details</a>
+                <Link className="btn btn--green btn--small" to={`/tour/${slug}`}>Details</Link>
             </div>
         </div>
     )

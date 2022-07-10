@@ -1,19 +1,22 @@
 .home-main {
-    /* height: calc(100vh - 115px); */
-    /* height: auto; */
     background-color: #f7f7f7;
     padding: 15px 0px;
     text-align: center;
     color: #444;
-    /* display: flex;
+    display: flex;
+    min-height: inherit;
     flex-direction: column;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
+    /*
+    height: calc(100vh - 125px);
+    height: auto;
+    */
 }
 
 .upper-half {
-    /* width: 60%; */
-    width: auto;
+    width: 60%;
+    /* width: auto; */
     display: inline-flex;
     flex-direction: column;
     text-align: center;

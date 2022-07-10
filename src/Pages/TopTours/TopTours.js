@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import TourCard from '../Common/Components/TourCard/TourCard'
 import Spinner from '../Common/Components/Spinner/Spinner'
+import SnackBar from '../Common/Components/Snackbar/Snackbar'
+import './TopTours.css'
 
 const TopTours = () => {
 
@@ -9,8 +11,9 @@ const TopTours = () => {
         tours: []
     })
     const [loading, setLoading] = useState(true)
+    const [displayAlert, setDisplayAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState('')
     const fetchtopTours = async () => {
-
         setLoading(true)
         const url = `https://natours-by-arpit.herokuapp.com/api/v1/tours/top-5-cheap`
         try {
@@ -24,8 +27,11 @@ const TopTours = () => {
             const json = await res.json()
 
             if (json.status !== 'success') {
-                alert('Internal Server Error!!')
-                throw new Error('request not completed')
+                setAlertMsg({
+                    message: 'Some Error Occurred...Please try after some time!',
+                    error: true
+                })
+                setDisplayAlert(true)
             }
             else {
                 settopTours({
@@ -34,7 +40,11 @@ const TopTours = () => {
                 })
             }
         } catch (err) {
-            alert(err)
+            setAlertMsg({
+                message: 'Some Error Occurred...Please try after some time!',
+                error: true
+            })
+            setDisplayAlert(true)
         }
         setLoading(false)
     }
@@ -42,16 +52,27 @@ const TopTours = () => {
         fetchtopTours()
         //eslint-disable-next-line
     }, [])
+    useEffect(() => {
+        setTimeout(() => {
+            setDisplayAlert(false)
+        }, 2000);
+    }, [displayAlert])
 
     return (
-        <div className='main'>
+        <div className='content'>
+            <div className="top-tours-heading">
+                <h1>Select from the best of all!</h1>
+            </div>
+            {/* <div className='main'> */}
             <div className="card-container">
                 {loading ? <Spinner /> : ''}
                 {!loading && topTours.tours.map((ele, i) => {
                     return <TourCard tour={ele} key={i} />
                 })}
             </div>
-        </div >
+            {/* </div > */}
+            {displayAlert ? <SnackBar message={alertMsg} /> : ''}
+        </div>
     )
 }
 

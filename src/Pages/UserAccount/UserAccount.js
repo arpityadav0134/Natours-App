@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../Context APIs/UserContextAPI'
+import SnackBar from '../Common/Components/Snackbar/Snackbar'
+import { disableButton, enableButton } from '../Common/Utils/toggleButtonState'
 import './UserAccount.css'
 
 
@@ -18,6 +20,8 @@ const UserAccount = () => {
         newPassword: '',
         passwordConfirm: ''
     })
+    const [displayAlert, setDisplayAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState('')
     const handleToggle = () => {
         setDisplayNav(!displayNav)
     }
@@ -31,6 +35,7 @@ const UserAccount = () => {
     }
     const handleSubmitSettings = async (e) => {
         e.preventDefault()
+        disableButton(e.target.querySelector('.btn'))
         try {
             const res = await fetch('https://natours-by-arpit.herokuapp.com/api/v1/users/updateMe', {
                 method: 'PATCH',
@@ -47,16 +52,30 @@ const UserAccount = () => {
             const json = await res.json()
 
             if (json.status !== 'success') {
-                alert('Invalid values!!')
+                setAlertMsg({
+                    message: 'Invalid values!',
+                    error: true
+                })
+                setDisplayAlert(true)
             }
             else {
                 setUser({
                     user: json.data.user
                 })
+                setAlertMsg({
+                    message: 'Settings updated!',
+                    error: false
+                })
+                setDisplayAlert(true)
             }
         } catch {
-            alert('Internal Server Error')
+            setAlertMsg({
+                message: 'Some Error Occurred!',
+                error: true
+            })
+            setDisplayAlert(true)
         }
+        enableButton(e.target.querySelector('.btn'))
         setDetails({
             name: user.user.name,
             email: user.user.email
@@ -64,6 +83,7 @@ const UserAccount = () => {
     }
     const handleUpdatePassword = async (e) => {
         e.preventDefault()
+        disableButton(e.target.querySelector('.btn'))
         try {
             const res = await fetch('https://natours-by-arpit.herokuapp.com/api/v1/users/updateMyPassword', {
                 method: 'PATCH',
@@ -81,23 +101,41 @@ const UserAccount = () => {
             // console.log(json);
 
             if (json.status !== 'success') {
-                alert('Password was not updated!!')
+                setAlertMsg({
+                    message: 'Password was not updated!',
+                    error: true
+                })
+                setDisplayAlert(true)
             }
             else {
-                alert('Password updated successfully')
+                setAlertMsg({
+                    message: 'Password updated successfully!',
+                    error: false
+                })
+                setDisplayAlert(true)
             }
         } catch {
-            alert('Internal Server Error')
+            setAlertMsg({
+                message: 'Some Error Occurred!',
+                error: true
+            })
+            setDisplayAlert(true)
         }
+        enableButton(e.target.querySelector('.btn'))
         setPasswords({
             oldPassword: '',
             newPassword: '',
             passwordConfirm: ''
         })
     }
+    useEffect(() => {
+        setTimeout(() => {
+            setDisplayAlert(false)
+        }, 2000);
+    }, [displayAlert])
 
     return (
-        <div>
+        <div className='content'>
             <div className="main">
                 <div className="user-view">
                     {/* left side navigation panel */}
@@ -133,7 +171,7 @@ const UserAccount = () => {
                         {/* Account settings form */}
                         <div className="user-view__form-container">
                             <h2 className='form-heading'>ACCOUNT SETTINGS</h2>
-                            <form className='html-form form-user-data'>
+                            <form className='html-form form-user-data' onSubmit={handleSubmitSettings}>
                                 <div className="form-group">
                                     <label className="form-label" htmlFor="name">Name</label>
                                     <input value={details.name} onChange={handleOnChangeF1} className="form-input" id='name' type='text' required></input>
@@ -151,7 +189,7 @@ const UserAccount = () => {
                                     }} className="form-upload" type="file" accept="image/*" id="photo" name="photo"></input>
                                 </div>
                                 <div className="form-buttons">
-                                    <button className='btn' onClick={handleSubmitSettings}>SAVE SETTINGS</button>
+                                    <button className='btn' type='submit'>SAVE SETTINGS</button>
                                 </div>
                             </form>
                         </div>
@@ -160,7 +198,7 @@ const UserAccount = () => {
                         {/* Update password form */}
                         <div className="user-view__form-container">
                             <h2 className='form-heading'>UPDATE PASSWORD</h2>
-                            <form className='html-form form-user-password'>
+                            <form className='html-form form-user-password' onClick={handleUpdatePassword}>
                                 <div className="form-group">
                                     <label className="form-label" htmlFor="password-current">Currnet password</label>
                                     <input className="form-input" value={passwords.oldPassword} onChange={handleOnChangeF2} id='oldPassword' type='password'></input>
@@ -174,13 +212,14 @@ const UserAccount = () => {
                                     <input className="form-input" value={passwords.passwordConfirm} onChange={handleOnChangeF2} id='passwordConfirm' type='password'></input>
                                 </div>
                                 <div className="form-buttons">
-                                    <button className='btn' onClick={handleUpdatePassword} >SUBMIT</button>
+                                    <button className='btn' type='submit' >SUBMIT</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            {displayAlert ? <SnackBar message={alertMsg} /> : ''}
         </div>
     )
 }
