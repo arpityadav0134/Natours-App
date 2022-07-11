@@ -17,7 +17,7 @@ const Navbar = () => {
         setDisplayNav(!displayNav)
     }
     const handleLogout = async () => {
-        handleToggle()
+        setDisplayNav(false)
         try {
             setUser({
                 isLoggedIn: false,
@@ -107,19 +107,19 @@ const Navbar = () => {
             </nav>
             {/* B) Navbar for smaller screen sizes, toggled by the hamburger button */}
             <ul className={`${displayNav ? 'nav-menu-mobile nav-menu-mobile_active' : 'nav-menu-mobile'}`}>
-                <li><Link className={`${location.pathname === '/' ? "active" : ""}`} onClick={handleToggle} to="/">Home</Link></li>
-                <li><Link className={`${location.pathname === '/alltours' ? "active" : ""}`} onClick={handleToggle} to="/alltours">All Tours</Link></li>
-                <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} onClick={handleToggle} to="/about">About Us</Link></li>
-                <li><Link className={`${location.pathname === '/contact' ? "active" : ""}`} onClick={handleToggle} to="/contact">Contact Us</Link></li>
+                <li><Link className={`${location.pathname === '/' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/">Home</Link></li>
+                <li><Link className={`${location.pathname === '/alltours' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/alltours">All Tours</Link></li>
+                <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/about">About Us</Link></li>
+                <li><Link className={`${location.pathname === '/contact' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/contact">Contact Us</Link></li>
                 {!user.isLoggedIn ?
                     <>
-                        <li><Link className={`${location.pathname === '/login' ? "active" : ""}`} onClick={handleToggle} to="/login">Login</Link></li>
-                        <li><Link className={`${location.pathname === '/signup' ? "active" : ""}`} onClick={handleToggle} to="/signup">Sign up</Link></li>
+                        <li><Link className={`${location.pathname === '/login' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/login">Login</Link></li>
+                        <li><Link className={`${location.pathname === '/signup' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/signup">Sign up</Link></li>
                     </>
                     :
                     <>
                         <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
-                        <li><Link className={`${location.pathname === '/myaccount' ? "active" : ""}`} onClick={handleToggle} to="/myaccount">My Account</Link></li>
+                        <li><Link className={`${location.pathname === '/myaccount' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/myaccount">My Account</Link></li>
                     </>
                 }
             </ul>

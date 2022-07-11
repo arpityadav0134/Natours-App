@@ -139,12 +139,10 @@ const UserAccount = () => {
             <div className="main">
                 <div className="user-view">
                     {/* left side navigation panel */}
-                    <div className='user-view__menu'>
-                        {/* hamburger font awesome icon for small screens*/}
+                    {/* <div className='user-view__menu'>
                         <div className="ham-btn">
                             <i className="fa-solid fa-bars" onClick={handleToggle} ></i>
                         </div>
-                        {/* navigation menu */}
                         <ul className="side-nav" style={{ display: displayNav ? 'flex' : 'none' }}>
                             <li>
                                 <Link to='/'>
@@ -166,61 +164,62 @@ const UserAccount = () => {
                             </li>
                         </ul>
                     </div>
-                    {/* right side user content */}
-                    <div className="user-view__content" style={{ filter: displayNav ? 'blur(5px)' : 'none', pointerEvents: displayNav ? 'none' : '' }}>
-                        {/* Account settings form */}
-                        <div className="user-view__form-container">
-                            <h2 className='form-heading'>ACCOUNT SETTINGS</h2>
-                            <form className='html-form form-user-data' onSubmit={handleSubmitSettings}>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="name">Name</label>
-                                    <input value={details.name} onChange={handleOnChangeF1} className="form-input" id='name' type='text' required></input>
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="email">Email address</label>
-                                    <input value={details.email} className="form-input" onChange={handleOnChangeF1} id='email' type='email' required></input>
-                                </div>
-                                <div className="form-group form-photo-upload">
-                                    <img className="form-user-photo" src={`/img/users/${user.user.photo}`} alt="" />
-                                    <label className="form-upload-label" htmlFor="photo">Choose new photo</label>
-                                    <input onChange={(e) => {
-                                        console.log(e.target.files[0]);
+                    */}
+                {/* right side user content */}
+                <div className="user-view__content" style={{ filter: displayNav ? 'blur(5px)' : 'none', pointerEvents: displayNav ? 'none' : '' }}>
+                    {/* Account settings form */}
+                    <div className="user-view__form-container">
+                        <h2 className='form-heading'>ACCOUNT SETTINGS</h2>
+                        <form className='html-form form-user-data' onSubmit={handleSubmitSettings}>
+                            <div className="form-group">
+                                <label className="form-label" htmlFor="name">Name</label>
+                                <input value={details.name} onChange={handleOnChangeF1} className="form-input" id='name' type='text' required></input>
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label" htmlFor="email">Email address</label>
+                                <input value={details.email} className="form-input" onChange={handleOnChangeF1} id='email' type='email' required></input>
+                            </div>
+                            <div className="form-group form-photo-upload">
+                                <img className="form-user-photo" src={`/img/users/${user.user.photo}`} alt="" />
+                                <label className="form-upload-label" htmlFor="photo">Choose new photo</label>
+                                <input onChange={(e) => {
+                                    console.log(e.target.files[0]);
 
-                                    }} className="form-upload" type="file" accept="image/*" id="photo" name="photo"></input>
-                                </div>
-                                <div className="form-buttons">
-                                    <button className='btn' type='submit'>SAVE SETTINGS</button>
-                                </div>
-                            </form>
-                        </div>
-                        {/* line of separation between the two forms */}
-                        <div className="line">&nbsp;</div>
-                        {/* Update password form */}
-                        <div className="user-view__form-container">
-                            <h2 className='form-heading'>UPDATE PASSWORD</h2>
-                            <form className='html-form form-user-password' onClick={handleUpdatePassword}>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="password-current">Currnet password</label>
-                                    <input className="form-input" value={passwords.oldPassword} onChange={handleOnChangeF2} id='oldPassword' type='password'></input>
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="password">New password</label>
-                                    <input className="form-input" value={passwords.newPassword} onChange={handleOnChangeF2} id='newPassword' type='password'></input>
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="password-confirm">Confirm password</label>
-                                    <input className="form-input" value={passwords.passwordConfirm} onChange={handleOnChangeF2} id='passwordConfirm' type='password'></input>
-                                </div>
-                                <div className="form-buttons">
-                                    <button className='btn' type='submit' >SUBMIT</button>
-                                </div>
-                            </form>
-                        </div>
+                                }} className="form-upload" type="file" accept="image/*" id="photo" name="photo"></input>
+                            </div>
+                            <div className="form-buttons">
+                                <button className='btn' type='submit'>SAVE SETTINGS</button>
+                            </div>
+                        </form>
+                    </div>
+                    {/* line of separation between the two forms */}
+                    <div className="line">&nbsp;</div>
+                    {/* Update password form */}
+                    <div className="user-view__form-container">
+                        <h2 className='form-heading'>UPDATE PASSWORD</h2>
+                        <form className='html-form form-user-password' onClick={handleUpdatePassword}>
+                            <div className="form-group">
+                                <label className="form-label" htmlFor="password-current">Currnet password</label>
+                                <input className="form-input" value={passwords.oldPassword} onChange={handleOnChangeF2} id='oldPassword' type='password'></input>
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label" htmlFor="password">New password</label>
+                                <input className="form-input" value={passwords.newPassword} onChange={handleOnChangeF2} id='newPassword' type='password'></input>
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label" htmlFor="password-confirm">Confirm password</label>
+                                <input className="form-input" value={passwords.passwordConfirm} onChange={handleOnChangeF2} id='passwordConfirm' type='password'></input>
+                            </div>
+                            <div className="form-buttons">
+                                <button className='btn' type='submit' >SUBMIT</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            {displayAlert ? <SnackBar message={alertMsg} /> : ''}
         </div>
+            { displayAlert ? <SnackBar message={alertMsg} /> : '' }
+        </div >
     )
 }
 
