@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
 import Home from './Pages/Home/Home.js';
+import Contact from './Pages/Contact/Contact.js';
 import Login from './Pages/Login/Login.js';
 import Signup from './Pages/Signup/Signup.js';
 import UpdatePassword from './Pages/UpdatePassword/UpdatePassword.js';
@@ -24,6 +25,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path='/' element={<Home />} />
+            <Route exact path='/contact' element={<Contact/>} />
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/myaccount' element={<UserAccount />} />

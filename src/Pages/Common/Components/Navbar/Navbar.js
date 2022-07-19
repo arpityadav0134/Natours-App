@@ -79,7 +79,7 @@ const Navbar = () => {
                                 <Link to="/alltours">ALL TOURS</Link>
                             </div>
                         </div>
-                        <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} to="/about">About Us</Link></li>
+                        {/* <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} to="/about">About Us</Link></li> */}
                         <li><Link className={`${location.pathname === '/contact' ? "active" : ""}`} to="/contact">Contact Us</Link></li>
                     </ul>
                 </div>
@@ -109,7 +109,7 @@ const Navbar = () => {
             <ul className={`${displayNav ? 'nav-menu-mobile nav-menu-mobile_active' : 'nav-menu-mobile'}`}>
                 <li><Link className={`${location.pathname === '/' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/">Home</Link></li>
                 <li><Link className={`${location.pathname === '/alltours' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/alltours">All Tours</Link></li>
-                <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/about">About Us</Link></li>
+                {/* <li><Link className={`${location.pathname === '/about' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/about">About Us</Link></li> */}
                 <li><Link className={`${location.pathname === '/contact' ? "active" : ""}`} onClick={()=>{setDisplayNav(false)}} to="/contact">Contact Us</Link></li>
                 {!user.isLoggedIn ?
                     <>
